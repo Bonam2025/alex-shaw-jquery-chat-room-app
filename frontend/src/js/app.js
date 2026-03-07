@@ -9,7 +9,7 @@ $(document).ready(function() {
         // Object Property - stores all application state/data
         state: {
             // String properties with default values
-            username: 'User',           // User's display name
+            username: 'Jakia',           // User's display name
             userStatus: 'online',       // User's current status
             theme: 'dark',             // UI theme preference
             fontSize: 'medium',        // Text size preference
@@ -491,7 +491,7 @@ Session Statistics:
             this.addMessage({
                 user: 'System',
                 // Template literal with property access and emoji
-                text: `Welcome to ChatPro, ${this.state.username}! 🎉\n\nType /help for available commands.`,
+                text: `Welcome to Jakia Chat Room, ${this.state.username}! 🎉\n\nType /help for available commands.`,
                 type: 'other',
                 timestamp: new Date()
             });

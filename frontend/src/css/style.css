@@ -9,7 +9,7 @@
 :root {
     /* Light theme color scheme using CSS custom properties */
     /* Custom properties start with -- and can be referenced with var() */
-    --primary-color: #6366f1;      /* Main brand color (indigo) */
+    --primary-color: #ca33f4;      /* Main brand color (indigo) */
     --primary-hover: #5855eb;      /* Darker shade for hover states */
     --secondary-color: #f3f4f6;    /* Secondary background color */
     --background-color: #ffffff;   /* Main background (white) */
