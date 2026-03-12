@@ -52,7 +52,7 @@ body.dark-theme {
 /* Body element styling */
 body {
     /* Font stack with fallbacks for different operating systems */
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Auge', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: var(--background-color); /* Uses CSS custom property */
     color: var(--text-primary);               /* Text color from theme */
     height: 100vh;                            /* Full viewport height */
