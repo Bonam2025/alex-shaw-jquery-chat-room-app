@@ -1,91 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags define document properties -->
-    <meta charset="UTF-8"> <!-- Character encoding for proper text display -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design viewport -->
-    <title>Jakia's Chat Room</title> <!-- Browser tab title -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakia's Group Chat</title>
     
-    <!-- External CSS imports using <link> tags -->
-    <!-- Google Fonts for custom typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for icons (version 6.0.0 from CDN) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- jQuery UI CSS for styled dialogs and components -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/ui-lightness/jquery-ui.css">
-    
-    <!-- Our custom CSS file - loaded last to override other styles -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="dark-theme"> <!-- CSS class applied to body for dark theme styling -->
+<body class="dark-theme">
     
-    <!-- Main application container using flexbox layout -->
     <div id="app-container">
         
-        <!-- Left sidebar containing user profile and navigation -->
         <div id="sidebar">
-            <!-- Header section of sidebar with logo and status -->
             <div class="sidebar-header">
-                <!-- Application logo using flexbox for alignment -->
                 <div class="logo">
-                    <!-- Font Awesome icon (fas = Font Awesome Solid) -->
                     <i class="fas fa-comments"></i>
-                    <!-- Text content wrapped in span for styling -->
-                    <span>ChatPro</span>
+                    <span>Jakia Chat</span>
                 </div>
-                <!-- Status indicator showing user's online status -->
                 <div class="status-indicator online" id="status-indicator">
-                    <!-- Visual dot indicator (styled with CSS) -->
                     <span class="status-dot"></span>
-                    <!-- Text showing current status -->
                     <span class="status-text">Online</span>
                 </div>
             </div>
             
-            <!-- Main content area of sidebar -->
             <div class="sidebar-content">
-                <!-- User profile card -->
                 <div class="user-profile" id="user-profile">
-                    <!-- User avatar (circular container) -->
                     <div class="avatar">
-                        <!-- Default user icon -->
                         <i class="fas fa-user"></i>
                     </div>
-                    <!-- User information text -->
                     <div class="user-info">
-                        <!-- Username display (updated via JavaScript) -->
                         <div class="username" id="display-username">User</div>
-                        <!-- Status text -->
                         <div class="user-status">Active now</div>
                     </div>
                 </div>
                 
-                <!-- Action buttons section -->
                 <div class="quick-actions">
-                    <!-- Button elements with IDs for JavaScript event binding -->
                     <button class="action-btn" id="settings-btn">
-                        <i class="fas fa-cog"></i> <!-- Settings gear icon -->
+                        <i class="fas fa-cog"></i>
                         <span>Settings</span>
                     </button>
                     <button class="action-btn" id="clear-chat">
-                        <i class="fas fa-trash"></i> <!-- Trash can icon -->
+                        <i class="fas fa-trash"></i>
                         <span>Clear Chat</span>
                     </button>
                 </div>
                 
-                <!-- Statistics display using CSS Grid -->
                 <div class="chat-stats">
-                    <!-- Individual stat items -->
                     <div class="stat-item">
-                        <!-- Number display (updated via JavaScript) -->
                         <div class="stat-number" id="message-count">0</div>
-                        <!-- Label for the statistic -->
                         <div class="stat-label">Messages</div>
                     </div>
                     <div class="stat-item">
-                        <!-- Time display (updated every second via JavaScript) -->
                         <div class="stat-number" id="session-time">00:00</div>
                         <div class="stat-label">Session</div>
                     </div>
@@ -93,91 +61,63 @@
             </div>
         </div>
         
-        <!-- Main chat area taking up remaining space -->
         <div id="main-chat">
-            <!-- Header bar for chat area -->
             <div id="chat-header">
-                <!-- Chat title section -->
                 <div class="chat-title">
-                    <h2>Jakia Chat</h2> <!-- Main heading -->
+                    <h2>Jakia Group Chat</h2>
+                    <p>Welcome to my custom group chat app.</p>
                 </div>
-                <!-- Action buttons in header -->
                 <div class="header-actions">
-                    <!-- Search button with tooltip -->
                     <button class="icon-btn" id="search-btn" title="Search messages">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
             </div>
             
-            <!-- Messages container (scrollable) -->
-            <div id="chat-messages" class="chat-messages">
-                <!-- JavaScript will dynamically insert message elements here -->
-                <!-- Messages will have structure like:
-                     <div class="message own/other">
-                         <div class="message-avatar">A</div>
-                         <div class="message-content">...</div>
-                     </div>
-                -->
-            </div>
+            <div id="chat-messages" class="chat-messages"></div>
             
-            <!-- Typing indicator (hidden by default) -->
             <div id="typing-indicator" class="typing-indicator">
-                <!-- Animated dots to show typing -->
                 <div class="typing-dots">
-                    <!-- Three spans create bouncing dot animation -->
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
-                <span class="typing-text">ChatBot is typing...</span>
+                <span class="typing-text">Someone is typing...</span>
             </div>
             
-            <!-- Message input area at bottom -->
             <div id="chat-input-container">
-                <!-- Input wrapper for styling and layout -->
                 <div class="input-wrapper">
-                    <!-- Textarea for message input -->
                     <textarea 
                         id="message-input" 
                         placeholder="Type your message..." 
-                        rows="1"           <!-- Initial height -->
-                        maxlength="500"    <!-- Character limit -->
+                        rows="1"
+                        maxlength="500"
                     ></textarea>
-                    <!-- Action buttons and counter -->
                     <div class="input-actions">
-                        <!-- Character counter (updated via JavaScript) -->
                         <span class="char-count">0/500</span>
-                        <!-- Send button (disabled until user types) -->
                         <button id="send-btn" class="send-btn" disabled>
-                            <i class="fas fa-paper-plane"></i> <!-- Send icon -->
+                            <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
                 </div>
             </div>
+
+            <footer class="chat-footer">
+                <p>Created by Jakia Bonam for my web project.</p>
+            </footer>
         </div>
     </div>
 
-    <!-- Modal dialogs (hidden by default, shown via jQuery UI) -->
-    
-    <!-- Settings modal dialog -->
     <div id="settings-dialog" title="Settings">
         <div class="settings-content">
-            <!-- Settings sections organized by category -->
-            
-            <!-- Profile settings section -->
             <div class="settings-section">
                 <h3><i class="fas fa-user"></i> Profile</h3>
-                <!-- Form groups for consistent spacing -->
                 <div class="form-group">
-                    <!-- Label associated with input via 'for' attribute -->
                     <label for="username">Display Name</label>
-                    <!-- Text input with validation attributes -->
                     <input type="text" id="username" placeholder="Enter your name" maxlength="20">
                 </div>
                 <div class="form-group">
                     <label for="user-status">Status</label>
-                    <!-- Dropdown select with predefined options -->
                     <select id="user-status">
                         <option value="online">Online</option>
                         <option value="away">Away</option>
@@ -186,7 +126,6 @@
                 </div>
             </div>
             
-            <!-- Appearance settings section -->
             <div class="settings-section">
                 <h3><i class="fas fa-palette"></i> Appearance</h3>
                 <div class="form-group">
@@ -194,7 +133,7 @@
                     <select id="theme">
                         <option value="light">Light</option>
                         <option value="dark">Dark</option>
-                        <option value="auto">Auto</option> <!-- Follows system preference -->
+                        <option value="auto">Auto</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -207,22 +146,17 @@
                 </div>
             </div>
             
-            <!-- Notification settings section -->
             <div class="settings-section">
                 <h3><i class="fas fa-bell"></i> Notifications</h3>
-                <!-- Checkbox groups for boolean settings -->
                 <div class="form-group checkbox-group">
-                    <!-- Label wraps checkbox for easier clicking -->
                     <label class="checkbox-label">
-                        <!-- Checkbox input (checked by default) -->
                         <input type="checkbox" id="sound-notifications" checked>
-                        <span class="checkmark"></span> <!-- Custom checkbox styling -->
+                        <span class="checkmark"></span>
                         Sound notifications
                     </label>
                 </div>
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
-                        <!-- This checkbox starts unchecked -->
                         <input type="checkbox" id="desktop-notifications">
                         <span class="checkmark"></span>
                         Desktop notifications
@@ -232,25 +166,15 @@
         </div>
     </div>
 
-    <!-- Search modal dialog -->
     <div id="search-dialog" title="Search Messages">
         <div class="search-content">
-            <!-- Search input field -->
             <input type="text" id="search-input" placeholder="Search messages...">
-            <!-- Container for search results (populated via JavaScript) -->
             <div id="search-results"></div>
         </div>
     </div>
 
-    <!-- JavaScript libraries loaded before our custom scripts -->
-    
-    <!-- jQuery library (version 3.6.0) - enables $ syntax and DOM manipulation -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <!-- jQuery UI library (version 1.13.2) - provides dialog boxes and UI components -->
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-    
-    <!-- Our main application JavaScript file - loaded last so it can use jQuery -->
     <script src="js/app.js"></script>
 </body>
 </html>

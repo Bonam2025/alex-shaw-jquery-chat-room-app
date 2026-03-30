@@ -18,7 +18,7 @@
     --text-primary: #111827;       /* Primary text color (dark) */
     --text-secondary: #6b7280;     /* Secondary text color (gray) */
     --text-muted: #9ca3af;         /* Muted text color (light gray) */
-    --success-color: #10b981;      /* Success/positive color (green) */
+    --success-color: hsl(196, 84%, 39%);      /* Success/positive color (green) */
     --warning-color: #f59e0b;      /* Warning color (orange) */
     --error-color: #ef4444;        /* Error color (red) */
     
