@@ -1,806 +1,775 @@
 /* CSS Reset - removes default browser styling for consistent appearance */
 * {
-    margin: 0;         /* Remove default margins */
-    padding: 0;        /* Remove default padding */
-    box-sizing: border-box; /* Include padding/border in element width/height */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* CSS Custom Properties (Variables) - defines reusable values */
 :root {
-    /* Light theme color scheme using CSS custom properties */
-    /* Custom properties start with -- and can be referenced with var() */
-    --primary-color: #570303;      /* Main brand color (indigo) */
-    --primary-hover: #5855eb;      /* Darker shade for hover states */
-    --secondary-color: #f3f4f6;    /* Secondary background color */
-    --background-color: #ffffff;   /* Main background (white) */
-    --surface-color: #f9fafb;      /* Elevated surface color */
-    --border-color: #e5e7eb;       /* Border and divider color */
-    --text-primary: #111827;       /* Primary text color (dark) */
-    --text-secondary: #6b7280;     /* Secondary text color (gray) */
-    --text-muted: #9ca3af;         /* Muted text color (light gray) */
-    --success-color: hsl(196, 84%, 39%);      /* Success/positive color (green) */
-    --warning-color: #f59e0b;      /* Warning color (orange) */
-    --error-color: #ef4444;        /* Error color (red) */
-    
-    /* Shadow definitions using CSS box-shadow property */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);    /* Small shadow */
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Medium shadow */
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* Large shadow */
-    
-    /* Border radius values for consistent rounded corners */
-    --radius-sm: 0.375rem;   /* Small radius (6px) */
-    --radius-md: 0.5rem;     /* Medium radius (8px) */
-    --radius-lg: 0.75rem;    /* Large radius (12px) */
-    --radius-xl: 1rem;       /* Extra large radius (16px) */
+    --primary-color: #570303;
+    --primary-hover: #5855eb;
+    --secondary-color: #f3f4f6;
+    --background-color: #ffffff;
+    --surface-color: #f9fafb;
+    --border-color: #e5e7eb;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --success-color: hsl(196, 84%, 39%);
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
 }
 
-/* Dark theme color overrides using CSS specificity */
-/* When body has 'dark-theme' class, these custom properties override the defaults */
+/* Dark theme color overrides */
 body.dark-theme {
-    --primary-color: #6366f1;      /* Primary color stays same */
-    --primary-hover: #7c3aed;      /* Different hover color for dark theme */
-    --secondary-color: #374151;    /* Dark gray for secondary elements */
-    --background-color: #111827;   /* Dark background */
-    --surface-color: #1f2937;      /* Slightly lighter dark for surfaces */
-    --border-color: #374151;       /* Dark border color */
-    --text-primary: #f9fafb;       /* Light text on dark background */
-    --text-secondary: #d1d5db;     /* Light gray text */
-    --text-muted: #9ca3af;         /* Muted text stays same */
-    /* Success, warning, error colors remain the same for consistency */
+    --primary-color: #6366f1;
+    --primary-hover: #7c3aed;
+    --secondary-color: #374151;
+    --background-color: #111827;
+    --surface-color: #1f2937;
+    --border-color: #374151;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
 }
 
 /* Body element styling */
 body {
-    /* Font stack with fallbacks for different operating systems */
-    font-family: 'Auge', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: var(--background-color); /* Uses CSS custom property */
-    color: var(--text-primary);               /* Text color from theme */
-    height: 100vh;                            /* Full viewport height */
-    overflow: hidden;                         /* Prevent page scrolling */
-    transition: all 0.3s ease;               /* Smooth theme transitions */
+    font-family: "Brush Script MT", "Lucida Handwriting", cursive;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    height: 100vh;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 /* Main Application Layout using Flexbox */
 #app-container {
-    display: flex;        /* Flexbox container */
-    height: 100vh;        /* Full viewport height */
+    display: flex;
+    height: 100vh;
     background-color: var(--background-color);
 }
 
 /* Sidebar Styling */
 #sidebar {
-    width: 320px;                           /* Fixed width */
-    background-color: var(--surface-color); /* Theme-aware background */
-    border-right: 1px solid var(--border-color); /* Right border */
-    display: flex;                          /* Flexbox container */
-    flex-direction: column;                 /* Stack children vertically */
-    transition: all 0.3s ease;             /* Smooth animations */
+    width: 320px;
+    background-color: var(--surface-color);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
 }
 
 /* Sidebar header section */
 .sidebar-header {
-    padding: 1.5rem;                       /* 24px padding on all sides */
-    border-bottom: 1px solid var(--border-color); /* Bottom border separator */
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
-/* Logo styling using flexbox for alignment */
+/* Logo styling */
 .logo {
-    display: flex;           /* Flexbox for icon and text alignment */
-    align-items: center;     /* Vertically center items */
-    gap: 0.75rem;           /* 12px space between icon and text */
-    font-size: 1.5rem;      /* 24px font size */
-    font-weight: 700;       /* Bold font weight */
-    color: var(--primary-color); /* Brand color */
-    margin-bottom: 1rem;    /* 16px bottom margin */
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
 }
 
 .logo i {
-    font-size: 2rem; /* 32px - make icon larger than text */
+    font-size: 2rem;
 }
 
 /* Status indicator layout */
 .status-indicator {
-    display: flex;              /* Flexbox layout */
-    align-items: center;        /* Vertically center */
-    gap: 0.5rem;               /* 8px gap between dot and text */
-    font-size: 0.875rem;       /* 14px font size */
-    color: var(--text-secondary); /* Secondary text color */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
 }
 
 /* Animated status dot */
 .status-dot {
-    width: 8px;                 /* Fixed width */
-    height: 8px;                /* Fixed height (makes it square) */
-    border-radius: 50%;         /* Makes it circular */
-    background-color: var(--success-color); /* Green color */
-    animation: pulse 2s infinite; /* CSS animation that repeats */
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--success-color);
+    animation: pulse 2s infinite;
 }
 
 /* CSS Animation Definition */
 @keyframes pulse {
-    0%, 100% { opacity: 1; }    /* Fully visible at start and end */
-    50% { opacity: 0.5; }       /* Half transparent in middle */
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
 }
 
-/* Sidebar content area that expands to fill remaining space */
+/* Sidebar content area */
 .sidebar-content {
-    flex: 1;                    /* Take up remaining space */
-    padding: 1.5rem;            /* 24px padding */
-    display: flex;              /* Flexbox container */
-    flex-direction: column;     /* Stack children vertically */
-    gap: 2rem;                  /* 32px gap between sections */
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 /* User profile card */
 .user-profile {
-    display: flex;              /* Flexbox layout */
-    align-items: center;        /* Vertically center content */
-    gap: 1rem;                  /* 16px gap between avatar and info */
-    padding: 1rem;              /* 16px padding inside */
-    background-color: var(--background-color); /* Background color */
-    border-radius: var(--radius-lg);          /* Large rounded corners */
-    border: 1px solid var(--border-color);    /* Border around card */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
 }
 
 /* User avatar circle */
 .avatar {
-    width: 48px;                /* Fixed width */
-    height: 48px;               /* Fixed height (square) */
-    border-radius: 50%;         /* Make it circular */
-    /* CSS Gradient background */
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-    display: flex;              /* Flexbox for centering */
-    align-items: center;        /* Vertically center */
-    justify-content: center;    /* Horizontally center */
-    color: white;               /* White text/icon */
-    font-size: 1.25rem;         /* 20px font size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
 }
 
 /* User info section */
 .user-info {
-    flex: 1; /* Take up remaining space */
+    flex: 1;
 }
 
 /* Username display */
 .username {
-    font-weight: 600;                /* Semi-bold */
-    color: var(--text-primary);     /* Primary text color */
-    margin-bottom: 0.25rem;          /* 4px bottom margin */
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
 }
 
 /* User status text */
 .user-status {
-    font-size: 0.75rem;          /* 12px font size */
-    color: var(--text-muted);    /* Muted text color */
+    font-size: 0.75rem;
+    color: var(--text-muted);
 }
 
 /* Quick actions button container */
 .quick-actions {
-    display: flex;               /* Flexbox layout */
-    flex-direction: column;      /* Stack buttons vertically */
-    gap: 0.5rem;                /* 8px gap between buttons */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 /* Individual action button styling */
 .action-btn {
-    display: flex;               /* Flexbox for icon and text */
-    align-items: center;         /* Vertically center */
-    gap: 0.75rem;               /* 12px gap between icon and text */
-    padding: 0.75rem 1rem;      /* 12px top/bottom, 16px left/right */
-    background: none;            /* Remove default button background */
-    border: none;               /* Remove default button border */
-    border-radius: var(--radius-md); /* Medium rounded corners */
-    color: var(--text-secondary);   /* Secondary text color */
-    cursor: pointer;            /* Show pointer cursor on hover */
-    transition: all 0.2s ease; /* Smooth hover transitions */
-    font-size: 0.875rem;       /* 14px font size */
-    font-weight: 500;           /* Medium font weight */
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+    font-weight: 500;
 }
 
-/* Button hover state */
 .action-btn:hover {
-    background-color: var(--secondary-color); /* Background on hover */
-    color: var(--text-primary);              /* Darker text on hover */
+    background-color: var(--secondary-color);
+    color: var(--text-primary);
 }
 
-/* Icon alignment within buttons */
 .action-btn i {
-    width: 16px;        /* Fixed width for consistent alignment */
-    text-align: center; /* Center the icon within its space */
+    width: 16px;
+    text-align: center;
 }
 
-/* Statistics section using CSS Grid */
+/* Statistics section */
 .chat-stats {
-    display: grid;                    /* CSS Grid layout */
-    grid-template-columns: 1fr 1fr;   /* Two equal columns */
-    gap: 1rem;                       /* 16px gap between grid items */
-    margin-top: auto;                /* Push to bottom of container */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: auto;
 }
 
 /* Individual statistic item */
 .stat-item {
-    text-align: center;                    /* Center text */
-    padding: 1rem;                         /* 16px padding */
-    background-color: var(--background-color); /* Background color */
-    border-radius: var(--radius-md);       /* Medium rounded corners */
-    border: 1px solid var(--border-color); /* Border around item */
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
 }
 
 /* Large number display */
 .stat-number {
-    font-size: 1.5rem;              /* 24px font size */
-    font-weight: 700;               /* Bold weight */
-    color: var(--primary-color);    /* Brand color */
-    margin-bottom: 0.25rem;         /* 4px bottom margin */
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
 }
 
 /* Statistic label */
 .stat-label {
-    font-size: 0.75rem;          /* 12px font size */
-    color: var(--text-muted);    /* Muted text color */
-    text-transform: uppercase;    /* UPPERCASE text */
-    letter-spacing: 0.05em;      /* Slight letter spacing */
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* Main Chat Area Layout */
 #main-chat {
-    flex: 1;                   /* Take up remaining space after sidebar */
-    display: flex;             /* Flexbox container */
-    flex-direction: column;    /* Stack children vertically */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     background-color: var(--background-color);
 }
 
 /* Chat header bar */
 #chat-header {
-    padding: 1.5rem 2rem;                     /* 24px top/bottom, 32px left/right */
-    border-bottom: 1px solid var(--border-color); /* Bottom border */
-    display: flex;                             /* Flexbox layout */
-    align-items: center;                       /* Vertically center */
-    justify-content: space-between;            /* Space between title and actions */
-    background-color: var(--surface-color);   /* Surface background */
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--surface-color);
 }
 
 /* Chat title section */
 .chat-title h2 {
-    font-size: 1.5rem;              /* 24px font size */
-    font-weight: 600;               /* Semi-bold */
-    color: var(--text-primary);     /* Primary text color */
-    margin-bottom: 0.25rem;         /* 4px bottom margin */
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
 }
 
 .chat-subtitle {
-    font-size: 0.875rem;            /* 14px font size */
-    color: var(--text-secondary);   /* Secondary text color */
+    font-size: 0.875rem;
+    color: var(--text-secondary);
 }
 
 /* Header action buttons container */
 .header-actions {
-    display: flex;      /* Flexbox layout */
-    gap: 0.5rem;       /* 8px gap between buttons */
+    display: flex;
+    gap: 0.5rem;
 }
 
 /* Icon-only buttons in header */
 .icon-btn {
-    width: 40px;                           /* Fixed width */
-    height: 40px;                          /* Fixed height (square) */
-    border: none;                          /* Remove default border */
-    border-radius: var(--radius-md);      /* Medium rounded corners */
-    background-color: var(--background-color); /* Background color */
-    color: var(--text-secondary);         /* Text color */
-    cursor: pointer;                       /* Pointer cursor */
-    display: flex;                         /* Flexbox for centering */
-    align-items: center;                   /* Vertically center */
-    justify-content: center;               /* Horizontally center */
-    transition: all 0.2s ease;            /* Smooth transitions */
-    border: 1px solid var(--border-color); /* Border around button */
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: var(--radius-md);
+    background-color: var(--background-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
 }
 
-/* Icon button hover state */
 .icon-btn:hover {
-    background-color: var(--secondary-color); /* Background on hover */
-    color: var(--text-primary);              /* Text color on hover */
+    background-color: var(--secondary-color);
+    color: var(--text-primary);
 }
 
 /* Messages Container */
 .chat-messages {
-    flex: 1;                    /* Take up remaining vertical space */
-    overflow-y: auto;           /* Enable vertical scrolling */
-    padding: 1.5rem 2rem;       /* 24px top/bottom, 32px left/right */
-    display: flex;              /* Flexbox container */
-    flex-direction: column;     /* Stack messages vertically */
-    gap: 1rem;                  /* 16px gap between messages */
-    scroll-behavior: smooth;    /* Smooth scrolling animation */
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    scroll-behavior: smooth;
 }
 
-/* Custom scrollbar styling (WebKit browsers only) */
+/* Custom scrollbar styling */
 .chat-messages::-webkit-scrollbar {
-    width: 6px; /* Thin scrollbar */
+    width: 6px;
 }
 
 .chat-messages::-webkit-scrollbar-track {
-    background: var(--surface-color); /* Track background */
+    background: var(--surface-color);
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-    background: var(--border-color);  /* Scrollbar thumb color */
-    border-radius: 3px;              /* Rounded scrollbar */
+    background: var(--border-color);
+    border-radius: 3px;
 }
 
 .chat-messages::-webkit-scrollbar-thumb:hover {
-    background: var(--text-muted); /* Darker on hover */
+    background: var(--text-muted);
 }
 
 /* Individual Message Styling */
 .message {
-    display: flex;                  /* Flexbox layout */
-    gap: 0.75rem;                  /* 12px gap between avatar and content */
-    animation: fadeInUp 0.3s ease; /* Entrance animation */
+    display: flex;
+    gap: 0.75rem;
+    animation: fadeInUp 0.3s ease;
 }
 
 /* CSS Animation for message entrance */
 @keyframes fadeInUp {
     from {
-        opacity: 0;                 /* Start invisible */
-        transform: translateY(10px); /* Start 10px below */
+        opacity: 0;
+        transform: translateY(10px);
     }
     to {
-        opacity: 1;                 /* End fully visible */
-        transform: translateY(0);   /* End at normal position */
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Own messages (sent by current user) are right-aligned */
+/* Own messages */
 .message.own {
-    flex-direction: row-reverse; /* Reverse flex direction (avatar on right) */
+    flex-direction: row-reverse;
 }
 
 /* Message avatar styling */
 .message-avatar {
-    width: 36px;                /* Fixed width */
-    height: 36px;               /* Fixed height */
-    border-radius: 50%;         /* Circular shape */
-    display: flex;              /* Flexbox for centering */
-    align-items: center;        /* Vertically center */
-    justify-content: center;    /* Horizontally center */
-    font-size: 0.875rem;        /* 14px font size */
-    font-weight: 600;           /* Semi-bold */
-    color: white;               /* White text */
-    flex-shrink: 0;             /* Don't shrink when space is limited */
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: white;
+    flex-shrink: 0;
 }
 
-/* Own message avatar styling */
 .message.own .message-avatar {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
 }
 
-/* Other users' message avatar styling */
 .message.other .message-avatar {
     background: linear-gradient(135deg, var(--success-color), #059669);
 }
 
 /* Message content container */
 .message-content {
-    flex: 1;        /* Take available space */
-    max-width: 70%; /* Don't exceed 70% of container width */
+    flex: 1;
+    max-width: 70%;
 }
 
-/* Message header with sender and timestamp */
+/* Message header */
 .message-header {
-    display: flex;          /* Flexbox layout */
-    align-items: center;    /* Vertically center */
-    gap: 0.5rem;           /* 8px gap between sender and time */
-    margin-bottom: 0.5rem; /* 8px bottom margin */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-/* Right-align header for own messages */
 .message.own .message-header {
-    justify-content: flex-end; /* Right-align content */
+    justify-content: flex-end;
 }
 
 /* Message sender name */
 .message-sender {
-    font-weight: 600;               /* Semi-bold */
-    font-size: 0.875rem;            /* 14px font size */
-    color: var(--text-primary);     /* Primary text color */
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary);
 }
 
 /* Message timestamp */
 .message-time {
-    font-size: 0.75rem;          /* 12px font size */
-    color: var(--text-muted);    /* Muted text color */
+    font-size: 0.75rem;
+    color: var(--text-muted);
 }
 
-/* Message bubble containing the actual message text */
+/* Message bubble */
 .message-bubble {
-    padding: 0.75rem 1rem;      /* 12px top/bottom, 16px left/right */
-    border-radius: var(--radius-lg); /* Large rounded corners */
-    font-size: 0.875rem;        /* 14px font size */
-    line-height: 1.5;            /* 1.5x line height for readability */
-    word-wrap: break-word;       /* Break long words to prevent overflow */
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-lg);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    word-wrap: break-word;
 }
 
-/* Own message bubble styling */
 .message.own .message-bubble {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-    color: white;                        /* White text on colored background */
-    border-bottom-right-radius: var(--radius-sm); /* Smaller radius on pointing corner */
+    color: white;
+    border-bottom-right-radius: var(--radius-sm);
 }
 
-/* Other users' message bubble styling */
 .message.other .message-bubble {
-    background-color: var(--surface-color);    /* Surface background */
-    color: var(--text-primary);               /* Primary text color */
-    border: 1px solid var(--border-color);    /* Border around bubble */
-    border-bottom-left-radius: var(--radius-sm); /* Smaller radius on pointing corner */
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-bottom-left-radius: var(--radius-sm);
 }
 
 /* Typing Indicator Animation */
 .typing-indicator {
-    display: none;              /* Hidden by default */
-    align-items: center;        /* Vertically center */
-    gap: 0.75rem;              /* 12px gap between dots and text */
-    padding: 0 2rem 1rem;      /* 0 top, 32px left/right, 16px bottom */
-    color: var(--text-muted);  /* Muted text color */
-    font-size: 0.875rem;       /* 14px font size */
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 2rem 1rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
 }
 
-/* Show typing indicator when active */
 .typing-indicator.active {
-    display: flex; /* Show as flexbox when active */
+    display: flex;
 }
 
 /* Container for animated typing dots */
 .typing-dots {
-    display: flex;  /* Flexbox layout */
-    gap: 3px;      /* 3px gap between dots */
+    display: flex;
+    gap: 3px;
 }
 
 /* Individual typing dots */
 .typing-dots span {
-    width: 6px;                     /* Fixed width */
-    height: 6px;                    /* Fixed height */
-    border-radius: 50%;             /* Circular shape */
-    background-color: var(--text-muted); /* Muted color */
-    animation: typing 1.4s infinite ease-in-out; /* Bounce animation */
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--text-muted);
+    animation: typing 1.4s infinite ease-in-out;
 }
 
-/* Stagger the animation for each dot */
 .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
 .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
 
 /* Typing animation definition */
 @keyframes typing {
     0%, 80%, 100% {
-        transform: scale(0.8);  /* Smaller size */
-        opacity: 0.5;          /* Semi-transparent */
+        transform: scale(0.8);
+        opacity: 0.5;
     }
     40% {
-        transform: scale(1);    /* Normal size */
-        opacity: 1;            /* Fully opaque */
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
 /* Message Input Area */
 #chat-input-container {
-    padding: 1.5rem 2rem;                     /* 24px top/bottom, 32px left/right */
-    border-top: 1px solid var(--border-color); /* Top border separator */
-    background-color: var(--surface-color);   /* Surface background */
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--surface-color);
 }
 
-/* Input wrapper for styling and layout */
+/* Input wrapper */
 .input-wrapper {
-    display: flex;                         /* Flexbox layout */
-    align-items: flex-end;                 /* Align to bottom (for multi-line input) */
-    gap: 0.75rem;                         /* 12px gap between elements */
-    background-color: var(--background-color); /* Background color */
-    border: 2px solid var(--border-color); /* Border around input */
-    border-radius: var(--radius-xl);       /* Extra large rounded corners */
-    padding: 0.75rem 1rem;                /* 12px top/bottom, 16px left/right */
-    transition: all 0.2s ease;            /* Smooth transitions */
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+    background-color: var(--background-color);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
 }
 
-/* Focus state for input wrapper */
 .input-wrapper:focus-within {
-    border-color: var(--primary-color);           /* Primary color border */
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); /* Focus ring shadow */
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
 /* Emoji button in input */
 .emoji-btn {
-    background: none;                   /* No background */
-    border: none;                      /* No border */
-    color: var(--text-muted);         /* Muted text color */
-    cursor: pointer;                   /* Pointer cursor */
-    padding: 0.5rem;                  /* 8px padding */
-    border-radius: var(--radius-md);  /* Medium rounded corners */
-    transition: all 0.2s ease;       /* Smooth transitions */
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
 }
 
 .emoji-btn:hover {
-    color: var(--text-primary);              /* Primary text on hover */
-    background-color: var(--secondary-color); /* Background on hover */
+    color: var(--text-primary);
+    background-color: var(--secondary-color);
 }
 
 /* Main message input textarea */
 #message-input {
-    flex: 1;                    /* Take up available space */
-    border: none;               /* No border */
-    background: none;           /* No background */
-    color: var(--text-primary); /* Primary text color */
-    font-size: 0.875rem;       /* 14px font size */
-    line-height: 1.5;           /* 1.5x line height */
-    resize: none;               /* Disable manual resizing */
-    outline: none;              /* Remove focus outline */
-    font-family: inherit;       /* Use same font as parent */
-    max-height: 120px;          /* Maximum height before scrolling */
+    flex: 1;
+    border: none;
+    background: none;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+    max-height: 120px;
 }
 
-/* Placeholder text styling */
 #message-input::placeholder {
-    color: var(--text-muted); /* Muted color for placeholder */
+    color: var(--text-muted);
 }
 
 /* Input actions container */
 .input-actions {
-    display: flex;          /* Flexbox layout */
-    align-items: center;    /* Vertically center */
-    gap: 0.75rem;          /* 12px gap between elements */
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 }
 
 /* Character counter */
 .char-count {
-    font-size: 0.75rem;          /* 12px font size */
-    color: var(--text-muted);    /* Muted text color */
+    font-size: 0.75rem;
+    color: var(--text-muted);
 }
 
 /* Send button styling */
 .send-btn {
-    width: 36px;                    /* Fixed width */
-    height: 36px;                   /* Fixed height */
-    border: none;                   /* No border */
-    border-radius: 50%;             /* Circular shape */
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
     background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-    color: white;                   /* White icon */
-    cursor: pointer;                /* Pointer cursor */
-    display: flex;                  /* Flexbox for centering */
-    align-items: center;            /* Vertically center */
-    justify-content: center;        /* Horizontally center */
-    transition: all 0.2s ease;     /* Smooth transitions */
-    box-shadow: var(--shadow-sm);   /* Small shadow */
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
 }
 
-/* Send button hover state (when not disabled) */
 .send-btn:hover:not(:disabled) {
-    transform: scale(1.05);     /* Slightly larger */
-    box-shadow: var(--shadow-md); /* Medium shadow */
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
 }
 
-/* Send button disabled state */
 .send-btn:disabled {
-    background: var(--border-color); /* Gray background */
-    cursor: not-allowed;             /* Not-allowed cursor */
-    transform: none;                 /* No transform */
-    box-shadow: none;               /* No shadow */
+    background: var(--border-color);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 /* Settings Modal Styling */
 .settings-content {
-    max-height: 500px;  /* Maximum height */
-    overflow-y: auto;   /* Enable scrolling if content is too tall */
+    max-height: 500px;
+    overflow-y: auto;
 }
 
 /* Settings section groupings */
 .settings-section {
-    margin-bottom: 2rem; /* 32px bottom margin */
+    margin-bottom: 2rem;
 }
 
 /* Settings section headers */
 .settings-section h3 {
-    display: flex;                  /* Flexbox for icon and text */
-    align-items: center;            /* Vertically center */
-    gap: 0.5rem;                   /* 8px gap between icon and text */
-    font-size: 1.125rem;           /* 18px font size */
-    font-weight: 600;              /* Semi-bold */
-    color: var(--text-primary);    /* Primary text color */
-    margin-bottom: 1rem;           /* 16px bottom margin */
-    padding-bottom: 0.5rem;        /* 8px bottom padding */
-    border-bottom: 1px solid var(--border-color); /* Bottom border */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
 /* Form group containers */
 .form-group {
-    margin-bottom: 1rem; /* 16px bottom margin */
+    margin-bottom: 1rem;
 }
 
 /* Form labels */
 .form-group label {
-    display: block;                 /* Block display for full width */
-    font-weight: 500;               /* Medium font weight */
-    color: var(--text-primary);     /* Primary text color */
-    margin-bottom: 0.5rem;          /* 8px bottom margin */
-    font-size: 0.875rem;            /* 14px font size */
+    display: block;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
 }
 
 /* Form inputs and selects */
 .form-group input,
 .form-group select {
-    width: 100%;                        /* Full width */
-    padding: 0.75rem;                   /* 12px padding */
-    border: 1px solid var(--border-color); /* Border */
-    border-radius: var(--radius-md);    /* Medium rounded corners */
-    background-color: var(--background-color); /* Background color */
-    color: var(--text-primary);         /* Text color */
-    font-size: 0.875rem;                /* 14px font size */
-    transition: all 0.2s ease;         /* Smooth transitions */
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
 }
 
-/* Form input focus states */
 .form-group input:focus,
 .form-group select:focus {
-    outline: none;                             /* Remove default outline */
-    border-color: var(--primary-color);       /* Primary color border */
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); /* Focus ring */
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
 /* Checkbox group styling */
 .checkbox-group {
-    margin-bottom: 1rem; /* 16px bottom margin */
+    margin-bottom: 1rem;
 }
 
 /* Checkbox label styling */
 .checkbox-label {
-    display: flex;          /* Flexbox layout */
-    align-items: center;    /* Vertically center */
-    gap: 0.75rem;          /* 12px gap between checkbox and text */
-    cursor: pointer;        /* Pointer cursor for entire label */
-    font-weight: 400;       /* Normal font weight */
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-weight: 400;
 }
 
-/* Checkbox input styling */
 .checkbox-label input[type="checkbox"] {
-    width: auto;    /* Auto width (not full width like other inputs) */
-    margin: 0;      /* No margin */
+    width: auto;
+    margin: 0;
 }
 
 /* Search Modal Styling */
 .search-content {
-    padding: 1rem 0; /* 16px top/bottom padding */
+    padding: 1rem 0;
 }
 
 /* Search input field */
 #search-input {
-    width: 100%;                           /* Full width */
-    padding: 0.75rem;                      /* 12px padding */
-    border: 1px solid var(--border-color); /* Border */
-    border-radius: var(--radius-md);       /* Medium rounded corners */
-    background-color: var(--background-color); /* Background color */
-    color: var(--text-primary);            /* Text color */
-    font-size: 0.875rem;                   /* 14px font size */
-    margin-bottom: 1rem;                   /* 16px bottom margin */
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
 }
 
 /* Search results container */
 #search-results {
-    max-height: 300px;  /* Maximum height */
-    overflow-y: auto;   /* Enable scrolling */
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 /* Individual search result styling */
 .search-result {
-    padding: 0.75rem;                      /* 12px padding */
-    border-radius: var(--radius-md);       /* Medium rounded corners */
-    margin-bottom: 0.5rem;                 /* 8px bottom margin */
-    background-color: var(--surface-color); /* Surface background */
-    border: 1px solid var(--border-color); /* Border */
-    cursor: pointer;                       /* Pointer cursor */
-    transition: all 0.2s ease;            /* Smooth transitions */
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 0.5rem;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-/* Search result hover state */
 .search-result:hover {
-    background-color: var(--secondary-color); /* Background on hover */
+    background-color: var(--secondary-color);
 }
 
 /* Search result text */
 .search-result-text {
-    font-size: 0.875rem;            /* 14px font size */
-    color: var(--text-primary);     /* Primary text color */
-    margin-bottom: 0.25rem;         /* 4px bottom margin */
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
 }
 
 /* Search result metadata */
 .search-result-meta {
-    font-size: 0.75rem;          /* 12px font size */
-    color: var(--text-muted);    /* Muted text color */
+    font-size: 0.75rem;
+    color: var(--text-muted);
 }
 
-/* Responsive Design using CSS Media Queries */
+/* Responsive Design */
 @media (max-width: 768px) {
-    /* Styles for screens 768px wide or smaller (tablets and phones) */
-    
     #sidebar {
-        width: 280px;           /* Narrower sidebar */
-        position: fixed;        /* Fixed positioning */
-        left: -280px;          /* Hidden by default (off-screen) */
-        z-index: 1000;         /* High z-index to appear above other content */
-        transition: left 0.3s ease; /* Smooth slide animation */
+        width: 280px;
+        position: fixed;
+        left: -280px;
+        z-index: 1000;
+        transition: left 0.3s ease;
     }
-    
-    /* Show sidebar when active class is added */
+
     #sidebar.active {
-        left: 0; /* Slide in from left */
+        left: 0;
     }
-    
+
     #main-chat {
-        margin-left: 0; /* No margin since sidebar is hidden */
+        margin-left: 0;
     }
-    
-    /* Reduce padding on smaller screens */
+
     .sidebar-content {
-        padding: 1rem; /* 16px padding instead of 24px */
+        padding: 1rem;
     }
-    
+
     #chat-header {
-        padding: 1rem; /* 16px padding instead of 24px */
+        padding: 1rem;
     }
-    
+
     .chat-messages {
-        padding: 1rem; /* 16px padding instead of 32px */
+        padding: 1rem;
     }
-    
+
     #chat-input-container {
-        padding: 1rem; /* 16px padding instead of 24px */
+        padding: 1rem;
     }
 }
 
 /* jQuery UI Dialog Overrides */
-/* These styles override the default jQuery UI dialog styling */
-
 .ui-dialog {
-    border-radius: var(--radius-lg) !important; /* Large rounded corners */
-    border: none !important;                    /* Remove default border */
-    box-shadow: var(--shadow-lg) !important;    /* Large shadow */
-    background-color: var(--background-color) !important; /* Theme background */
+    border-radius: var(--radius-lg) !important;
+    border: none !important;
+    box-shadow: var(--shadow-lg) !important;
+    background-color: var(--background-color) !important;
 }
 
 .ui-dialog-titlebar {
-    background: var(--surface-color) !important;         /* Surface background */
-    border: none !important;                             /* No border */
-    border-bottom: 1px solid var(--border-color) !important; /* Bottom border only */
-    color: var(--text-primary) !important;               /* Primary text color */
-    font-weight: 600 !important;                         /* Semi-bold text */
-    padding: 1rem 1.5rem !important;                     /* Custom padding */
+    background: var(--surface-color) !important;
+    border: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    padding: 1rem 1.5rem !important;
 }
 
 .ui-dialog-content {
-    background-color: var(--background-color) !important; /* Background color */
-    color: var(--text-primary) !important;               /* Text color */
-    padding: 1.5rem !important;                          /* Custom padding */
+    background-color: var(--background-color) !important;
+    color: var(--text-primary) !important;
+    padding: 1.5rem !important;
 }
 
 .ui-dialog-buttonpane {
-    background-color: var(--surface-color) !important;   /* Surface background */
-    border-top: 1px solid var(--border-color) !important; /* Top border only */
-    padding: 1rem 1.5rem !important;                     /* Custom padding */
+    background-color: var(--surface-color) !important;
+    border-top: 1px solid var(--border-color) !important;
+    padding: 1rem 1.5rem !important;
 }
 
 /* jQuery UI Button styling */
 .ui-button {
-    background: var(--primary-color) !important;  /* Primary background */
-    border: none !important;                      /* No border */
-    color: white !important;                      /* White text */
-    padding: 0.75rem 1.5rem !important;          /* Custom padding */
-    border-radius: var(--radius-md) !important;   /* Medium rounded corners */
-    font-weight: 500 !important;                 /* Medium font weight */
-    transition: all 0.2s ease !important;        /* Smooth transitions */
+    background: var(--primary-color) !important;
+    border: none !important;
+    color: white !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: var(--radius-md) !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
 }
 
 .ui-button:hover {
-    background: var(--primary-hover) !important; /* Darker background on hover */
+    background: var(--primary-hover) !important;
 }
 
 /* Secondary button styling */
 .ui-button.ui-button-secondary {
-    background: var(--secondary-color) !important; /* Secondary background */
-    color: var(--text-primary) !important;        /* Primary text color */
+    background: var(--secondary-color) !important;
+    color: var(--text-primary) !important;
 }
